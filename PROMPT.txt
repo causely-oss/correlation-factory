@@ -1,0 +1,23 @@
+Build a humorous web app that randomly generates fake but visually convincing correlations between absurd pairs of metrics from the world of DevOps, SRE, and software observability.
+
+This is similar to https://tylervigen.com/
+
+The app should have:
+
+    A button labeled “Show Me the Causeless Chaos”
+
+    On click, it randomly selects one metric from each of two predefined lists (e.g., “Redis cache hit rate” vs “Engineers wearing Crocs”)
+
+    It then generates artificially correlated time series data over 10 recent dates
+
+    The data is displayed in a dual-axis line chart using Recharts:
+
+        Left Y-axis = Metric A
+
+        Right Y-axis = Metric B
+
+        X-axis = 10 past dates
+
+    Include a computed correlation coefficient (R²) to falsely imply causality
+
+    Show a randomly chosen sarcastic caption below the chart (e.g., “Everything graphs together if you squint hard enough.”)
