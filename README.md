@@ -129,13 +129,23 @@ Returns a sarcastic caption based on the correlationId.
    npm install
    ```
 
-3. Start the development server:
+3. (Optional) Set up Google Analytics:
+
+   Create a `.env.local` file in the root directory and add your Google Analytics 4 Measurement ID:
+
+   ```bash
+   GOOGLE_ANALYTICS_KEY=G-XXXXXXXXXX
+   ```
+
+   Replace `G-XXXXXXXXXX` with your actual Google Analytics 4 Measurement ID. If this environment variable is not set, Google Analytics will not be loaded.
+
+4. Start the development server:
 
    ```bash
    npm run dev
    ```
 
-4. Open your browser to `http://localhost:3000`
+5. Open your browser to `http://localhost:3000`
 
 ### Building for Production
 
@@ -149,8 +159,8 @@ The built files will be in the `dist` directory.
 
 - **React 18**: Modern React with hooks
 - **Recharts**: Beautiful, responsive charts
-- **Vite**: Fast development build tool
-- **Vercel Functions**: Serverless API endpoints
+- **Next.js 14**: React framework with API routes
+- **Google Analytics 4**: Optional analytics tracking
 - **Seeded Random**: Deterministic random number generation
 - **CSS3**: Custom styling with gradients and animations
 
@@ -226,6 +236,19 @@ Add new sarcastic captions to the `sarcasticCaptions` array in `api/data/metrics
 ### Styling
 
 Modify `src/index.css` to customize the appearance, colors, and layout.
+
+### Google Analytics Configuration
+
+The app includes optional Google Analytics 4 tracking that is conditionally loaded based on the `GOOGLE_ANALYTICS_KEY` environment variable:
+
+- **Development**: Set `GOOGLE_ANALYTICS_KEY` in your `.env.local` file
+- **Production**: Set the environment variable in your hosting platform (Vercel, Netlify, etc.)
+- **No Analytics**: If the environment variable is not set, no tracking scripts will be loaded
+
+The analytics component automatically tracks:
+- Page views on initial load
+- Route changes within the app
+- Custom events (can be extended as needed)
 
 ## Contributing
 

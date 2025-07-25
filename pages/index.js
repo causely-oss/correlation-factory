@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Head from "next/head";
+import Link from "next/link";
+import Image from "next/image";
 import CorrelationChart from "../components/CorrelationChart";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -8,6 +10,7 @@ import {
   faMoon,
   faDesktop,
   faDownload,
+  faBook,
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import html2canvas from "html2canvas";
@@ -196,7 +199,31 @@ export default function Home() {
   const [shareUrl, setShareUrl] = useState("");
   const [showShareTooltip, setShowShareTooltip] = useState(false);
   const [points, setPoints] = useState(10);
+  const [showScrollButton, setShowScrollButton] = useState(true);
   const chartRef = useRef(null);
+  const rootCauseSectionRef = useRef(null);
+
+  // Intersection observer to hide/show button based on bottom section visibility
+  useEffect(() => {
+    if (!rootCauseSectionRef.current) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setShowScrollButton(false);
+          } else {
+            setShowScrollButton(true);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(rootCauseSectionRef.current);
+
+    return () => observer.disconnect();
+  }, [correlationData, metrics, isGenerating, error]);
 
   // Save chart as image
   const saveChartAsImage = async () => {
@@ -465,13 +492,15 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="causely-link-compact"
               >
-                <img
+                <Image
                   src={
                     resolvedTheme === "dark"
                       ? "/causely-logo-dark.svg"
                       : "/causely-logo.svg"
                   }
                   alt="Causely Logo"
+                  width={120}
+                  height={24}
                   className="causely-logo-compact"
                   onError={(e) => {
                     e.target.style.display = "none";
@@ -528,6 +557,14 @@ export default function Home() {
                 </>
               )}
 
+              <Link
+                href="/api-docs"
+                className="api-link-compact"
+                title="API Documentation"
+              >
+                <FontAwesomeIcon icon={faBook} />
+              </Link>
+
               <a
                 href="https://github.com/causely-oss/causeless-chaos"
                 target="_blank"
@@ -564,7 +601,7 @@ export default function Home() {
         )}
 
         <div className="main-content">
-          <div className="header">
+          <div className={`header ${correlationData && metrics && !isGenerating && !error ? 'header-hidden-mobile' : ''}`}>
             <h1 className="title">Causeless Chaos</h1>
             <p className="subtitle">
               Generating spurious correlations in DevOps metrics since 2025
@@ -578,11 +615,13 @@ export default function Home() {
           >
             {isGenerating
               ? "Generating Chaos..."
+              : correlationData && metrics && !error
+              ? "Show me another causeless chaos"
               : "Show Me the Causeless Chaos"}
           </button>
 
           {isGenerating && (
-            <div className="loading">
+            <div className={`loading ${correlationData && metrics && !error ? 'loading-hidden-mobile' : ''}`}>
               <p>🔄 Artificially correlating unrelated metrics...</p>
               <p style={{ fontSize: "0.9rem", opacity: 0.8 }}>
                 Making separate API calls for each metric, computing correlation
@@ -622,7 +661,61 @@ export default function Home() {
               </p>
             </div>
           )}
+
+          {/* Floating scroll button - only show when graph is rendered */}
+          {correlationData && metrics && !isGenerating && !error && showScrollButton && (
+            <div 
+              className="floating-scroll-button"
+              onClick={() => {
+                setShowScrollButton(false);
+                document.querySelector('.root-cause-section').scrollIntoView({ 
+                  behavior: 'smooth',
+                  block: 'start'
+                });
+              }}
+            >
+              <div className="floating-text">Discover real causal reasoning</div>
+              <div className="floating-arrow">↓</div>
+            </div>
+          )}
         </div>
+
+        {/* Causal Reasoning Section - only show when graph is rendered */}
+        {correlationData && metrics && !isGenerating && !error && (
+          <div className="root-cause-section" ref={rootCauseSectionRef}>
+            <div className="root-cause-content">
+              <h2 className="root-cause-title">Beyond Correlation: Real Causal Reasoning</h2>
+              <p className="root-cause-text">
+                While this app demonstrates how easy it is to find meaningless correlations, real observability requires understanding the actual causal relationships between systems. Causely uses probabilistic modeling and causal inference to transform high-volume observability signals into real-time, explainable insights.
+              </p>
+              <div className="root-cause-features">
+                <div className="feature">
+                  <h3>Model-Driven Reasoning</h3>
+                  <p>Built-in causal models capture common root causes and failure propagation patterns across your entire infrastructure.</p>
+                </div>
+                <div className="feature">
+                  <h3>Automatic Topology Discovery</h3>
+                  <p>Continuously maps your services, databases, and infrastructure to understand real dependencies and blast radius.</p>
+                </div>
+                <div className="feature">
+                  <h3>Real-Time Inference</h3>
+                  <p>Uses Bayesian networks to infer the most likely root cause from observed symptoms, without manual correlation.</p>
+                </div>
+              </div>
+              <div className="root-cause-cta">
+                <p className="cta-text">Ready to move beyond correlation to true causal reasoning?</p>
+                <a 
+                  href="https://www.causely.ai/try?utm_source=causeless-chaos&utm_medium=web&utm_campaign=correlation-demo" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="demo-button"
+                >
+                  Get Started with Causely
+                </a>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );
