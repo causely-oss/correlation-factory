@@ -1,10 +1,8 @@
-# Correlation Factory 🔄
+# Correlation Factory
 
 [![Maintained by Causely](https://img.shields.io/badge/Maintained%20by-Causely.ai-blue)](https://www.causely.ai)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black&logo=vercel)](https://correlation-factory.vercel.app)
-[![Next.js](https://img.shields.io/badge/Next.js-15.4.4-black&logo=next.js)](https://nextjs.org/)
-[![React](https://img.shields.io/badge/React-19.1.0-blue&logo=react)](https://reactjs.org/)
 
 A humorous web app that generates fake correlations between absurd DevOps metrics. Perfect for demonstrating the dangers of spurious correlations in data science and the importance of proper statistical analysis.
 
