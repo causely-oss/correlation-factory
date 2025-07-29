@@ -217,7 +217,7 @@ export default function Home() {
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     observer.observe(rootCauseSectionRef.current);
@@ -337,8 +337,8 @@ export default function Home() {
         window.history.pushState({}, "", urlPath);
       }
     } catch (err) {
-              console.error("Error generating correlation:", err);
-        setError("Failed to generate correlation. Please try again.");
+      console.error("Error generating correlation:", err);
+      setError("Failed to generate correlation. Please try again.");
     } finally {
       setIsGenerating(false);
     }
@@ -359,7 +359,7 @@ export default function Home() {
       const urlPath = newUrl.replace(window.location.origin, "");
       window.history.pushState({}, "", urlPath);
     } catch (error) {
-              console.error("Error generating correlation:", error);
+      console.error("Error generating correlation:", error);
       setError("Failed to generate new words. Please try again.");
     }
   };
@@ -404,7 +404,9 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Correlation Factory - Discover Spurious Correlations in DevOps</title>
+        <title>
+          Correlation Factory - Discover Spurious Correlations in DevOps
+        </title>
         <meta
           name="description"
           content="A humorous web app that generates fake correlations between absurd DevOps metrics. Perfect for demonstrating the dangers of spurious correlations in data science."
@@ -413,10 +415,7 @@ export default function Home() {
           name="keywords"
           content="spurious correlation, DevOps metrics, data science, correlation analysis, chaos engineering, statistical significance, data visualization"
         />
-        <meta
-          name="author"
-          content="Correlation Factory"
-        />
+        <meta name="author" content="Correlation Factory" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="robots" content="index, follow" />
         <meta name="theme-color" content="#6366f1" />
@@ -432,7 +431,10 @@ export default function Home() {
           content="A humorous web app that generates fake correlations between absurd DevOps metrics. Perfect for demonstrating the dangers of spurious correlations in data science."
         />
         <meta property="og:image" content="/og-image.png" />
-        <meta property="og:url" content="https://correlation-factory.vercel.app" />
+        <meta
+          property="og:url"
+          content="https://correlation-factory.vercel.app"
+        />
         <meta property="og:site_name" content="Correlation Factory" />
 
         {/* Twitter */}
@@ -498,8 +500,8 @@ export default function Home() {
                 <Image
                   src={
                     resolvedTheme === "dark"
-                      ? "/causely-logo-dark.svg"
-                      : "/causely-logo.svg"
+                      ? "https://www.causely.ai/images/causely-logo-dark.svg"
+                      : "https://www.causely.ai/images/causely-logo.svg"
                   }
                   alt="Causely Logo"
                   width={120}
@@ -604,7 +606,9 @@ export default function Home() {
         )}
 
         <div className="main-content">
-          <div className={`header ${correlationData && metrics && !isGenerating && !error ? 'header-hidden-mobile' : ''}`}>
+          <div
+            className={`header ${correlationData && metrics && !isGenerating && !error ? "header-hidden-mobile" : ""}`}
+          >
             <h1 className="title">Correlation Factory</h1>
             <p className="subtitle">
               Generating spurious correlations in DevOps metrics since 2025
@@ -619,12 +623,14 @@ export default function Home() {
             {isGenerating
               ? "Generating Correlation..."
               : correlationData && metrics && !error
-              ? "Show me another correlation"
-              : "Manufacture Correlation"}
+                ? "Show me another correlation"
+                : "Manufacture Correlation"}
           </button>
 
           {isGenerating && (
-            <div className={`loading ${correlationData && metrics && !error ? 'loading-hidden-mobile' : ''}`}>
+            <div
+              className={`loading ${correlationData && metrics && !error ? "loading-hidden-mobile" : ""}`}
+            >
               <p>🔄 Artificially correlating unrelated metrics...</p>
               <p style={{ fontSize: "0.9rem", opacity: 0.8 }}>
                 Making separate API calls for each metric, computing correlation
@@ -666,50 +672,76 @@ export default function Home() {
           )}
 
           {/* Floating scroll button - only show when graph is rendered */}
-          {correlationData && metrics && !isGenerating && !error && showScrollButton && (
-            <div 
-              className="floating-scroll-button"
-              onClick={() => {
-                setShowScrollButton(false);
-                document.querySelector('.root-cause-section').scrollIntoView({ 
-                  behavior: 'smooth',
-                  block: 'start'
-                });
-              }}
-            >
-              <div className="floating-text">Discover real causal reasoning</div>
-              <div className="floating-arrow">↓</div>
-            </div>
-          )}
+          {correlationData &&
+            metrics &&
+            !isGenerating &&
+            !error &&
+            showScrollButton && (
+              <div
+                className="floating-scroll-button"
+                onClick={() => {
+                  setShowScrollButton(false);
+                  document.querySelector(".root-cause-section").scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                  });
+                }}
+              >
+                <div className="floating-text">
+                  Discover real causal reasoning
+                </div>
+                <div className="floating-arrow">↓</div>
+              </div>
+            )}
         </div>
 
         {/* Causal Reasoning Section - only show when graph is rendered */}
         {correlationData && metrics && !isGenerating && !error && (
           <div className="root-cause-section" ref={rootCauseSectionRef}>
             <div className="root-cause-content">
-              <h2 className="root-cause-title">Beyond Correlation: Real Causal Reasoning</h2>
+              <h2 className="root-cause-title">
+                Beyond Correlation: Real Causal Reasoning
+              </h2>
               <p className="root-cause-text">
-                While this app demonstrates how easy it is to find meaningless correlations, real observability requires understanding the actual causal relationships between systems. Causely uses probabilistic modeling and causal inference to transform high-volume observability signals into real-time, explainable insights.
+                While this app demonstrates how easy it is to find meaningless
+                correlations, real observability requires understanding the
+                actual causal relationships between systems. Causely uses
+                probabilistic modeling and causal inference to transform
+                high-volume observability signals into real-time, explainable
+                insights.
               </p>
               <div className="root-cause-features">
                 <div className="feature">
                   <h3>Model-Driven Reasoning</h3>
-                  <p>Built-in causal models capture common root causes and failure propagation patterns across your entire infrastructure.</p>
+                  <p>
+                    Built-in causal models capture common root causes and
+                    failure propagation patterns across your entire
+                    infrastructure.
+                  </p>
                 </div>
                 <div className="feature">
                   <h3>Automatic Topology Discovery</h3>
-                  <p>Continuously maps your services, databases, and infrastructure to understand real dependencies and blast radius.</p>
+                  <p>
+                    Continuously maps your services, databases, and
+                    infrastructure to understand real dependencies and blast
+                    radius.
+                  </p>
                 </div>
                 <div className="feature">
                   <h3>Real-Time Inference</h3>
-                  <p>Uses Bayesian networks to infer the most likely root cause from observed symptoms, without manual correlation.</p>
+                  <p>
+                    Uses Bayesian networks to infer the most likely root cause
+                    from observed symptoms, without manual correlation.
+                  </p>
                 </div>
               </div>
               <div className="root-cause-cta">
-                <p className="cta-text">Ready to move beyond correlation to true causal reasoning?</p>
-                <a 
-                  href="https://www.causely.ai/try?utm_source=correlation-factory&utm_medium=web&utm_campaign=correlation-demo" 
-                  target="_blank" 
+                <p className="cta-text">
+                  Ready to move beyond correlation to true causal reasoning?
+                </p>
+                <a
+                  href="https://www.causely.ai/try?utm_source=correlation-factory&utm_medium=web&utm_campaign=correlation-demo"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="demo-button"
                 >

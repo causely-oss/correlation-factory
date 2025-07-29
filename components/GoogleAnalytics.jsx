@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
-import { useRouter } from 'next/router';
-import Script from 'next/script';
+import { useEffect } from "react";
+import { useRouter } from "next/router";
+import Script from "next/script";
 
 const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_KEY;
 
@@ -9,24 +9,26 @@ const GoogleAnalytics = () => {
 
   useEffect(() => {
     if (!GA_TRACKING_ID) {
-      console.log('Google Analytics not loaded: NEXT_PUBLIC_GOOGLE_ANALYTICS_KEY not set');
+      console.log(
+        "Google Analytics not loaded: NEXT_PUBLIC_GOOGLE_ANALYTICS_KEY not set",
+      );
       return;
     }
 
     // Track page views on route changes
     const handleRouteChange = (url) => {
-      if (typeof window !== 'undefined' && window.gtag) {
-        window.gtag('config', GA_TRACKING_ID, {
+      if (typeof window !== "undefined" && window.gtag) {
+        window.gtag("config", GA_TRACKING_ID, {
           page_title: document.title,
           page_location: url,
         });
       }
     };
 
-    router.events.on('routeChangeComplete', handleRouteChange);
+    router.events.on("routeChangeComplete", handleRouteChange);
 
     return () => {
-      router.events.off('routeChangeComplete', handleRouteChange);
+      router.events.off("routeChangeComplete", handleRouteChange);
     };
   }, [router.events]);
 
@@ -61,4 +63,4 @@ const GoogleAnalytics = () => {
   );
 };
 
-export default GoogleAnalytics; 
+export default GoogleAnalytics;

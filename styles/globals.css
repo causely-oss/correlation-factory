@@ -872,7 +872,11 @@ body {
 /* Old scroll indicator styles removed - now using floating button as default */
 
 @keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
     transform: translateY(0);
   }
   40% {
@@ -891,11 +895,7 @@ body {
   transform: translateX(-50%);
   width: 180px;
   height: 50px;
-  background: linear-gradient(
-    135deg,
-    #4338A6 0%,
-    #019B84 100%
-  );
+  background: linear-gradient(135deg, #4338a6 0%, #019b84 100%);
   border-radius: 25px;
   display: flex;
   align-items: center;
@@ -933,7 +933,11 @@ body {
 }
 
 @keyframes arrowBounce {
-  0%, 20%, 50%, 80%, 100% {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
     transform: translateY(0);
   }
   40% {
@@ -959,7 +963,7 @@ body {
 }
 
 .root-cause-section::before {
-  content: '';
+  content: "";
   position: absolute;
   top: -2px;
   left: 0;
@@ -1052,11 +1056,7 @@ body {
 
 .demo-button {
   display: inline-block;
-  background: linear-gradient(
-    135deg,
-    #4338A6 0%,
-    #019B84 100%
-  );
+  background: linear-gradient(135deg, #4338a6 0%, #019b84 100%);
   color: white;
   text-decoration: none;
   padding: 1rem 2rem;
@@ -1271,7 +1271,7 @@ body {
   background: var(--card-bg);
   padding: 0.5rem;
   border-radius: 4px;
-  font-family: 'Courier New', monospace;
+  font-family: "Courier New", monospace;
   color: var(--text-primary);
 }
 
@@ -1385,7 +1385,7 @@ body {
 }
 
 .test-button {
-  background: linear-gradient(135deg, #4338A6 0%, #019B84 100%);
+  background: linear-gradient(135deg, #4338a6 0%, #019b84 100%);
   color: white;
   border: none;
   padding: 0.75rem 1.5rem;
@@ -1400,7 +1400,7 @@ body {
 .test-button:hover {
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(67, 56, 166, 0.4);
-  background: linear-gradient(135deg, #4338A6 0%, #019B84 100%);
+  background: linear-gradient(135deg, #4338a6 0%, #019b84 100%);
 }
 
 .test-results {
@@ -1449,7 +1449,7 @@ body {
 
 .url {
   color: var(--text-secondary);
-  font-family: 'Courier New', monospace;
+  font-family: "Courier New", monospace;
 }
 
 .response-data {
@@ -1458,7 +1458,7 @@ body {
   padding: 1rem;
   border-radius: 6px;
   overflow-x: auto;
-  font-family: 'Courier New', monospace;
+  font-family: "Courier New", monospace;
   font-size: 0.8rem;
   line-height: 1.4;
   border: 1px solid #4a5568;
