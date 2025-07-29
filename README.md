@@ -1,6 +1,15 @@
-# Correlation Factory 🔄
+# Correlation Factory
+
+[![Maintained by Causely](https://img.shields.io/badge/Maintained%20by-Causely.ai-blue)](https://www.causely.ai)
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black&logo=vercel)](https://correlation-factory.vercel.app)
 
 A humorous web app that generates fake correlations between absurd DevOps metrics. Perfect for demonstrating the dangers of spurious correlations in data science and the importance of proper statistical analysis.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./public/example-dark.png">
+  <img alt="" src="./public/example-light.png">
+</picture>
 
 ## Features
 
@@ -32,15 +41,18 @@ Visit `/api-docs` for interactive API documentation.
 
 ### Prerequisites
 
-- Node.js 18+ 
+- Node.js 18+
 - npm or yarn
 
 ### Installation
 
 ```bash
 # Clone the repository
-git clone <repository-url>
+git clone https://github.com/causely-oss/correlation-factory
 cd correlation-factory
+
+# Copy .env.local.sample to .env.local & edit this file for your settings
+cp .env.local.sample .env.local
 
 # Install dependencies
 npm install
@@ -58,12 +70,16 @@ npm start
 
 ## Contributing
 
-This is a fun project to demonstrate the importance of proper statistical analysis. Feel free to contribute by:
+This is a fun project to demonstrate the importance of proper statistical analysis. We welcome contributions from the community!
 
-- Adding more absurd DevOps metrics
-- Improving the correlation algorithms
-- Enhancing the UI/UX
-- Adding more humorous captions
+Please see our [Contributing Guidelines](CONTRIBUTING.md) for detailed information on how to:
+
+- Add more absurd DevOps metrics
+- Improve the correlation algorithms
+- Enhance the UI/UX
+- Add more humorous captions
+- Report bugs or suggest features
+- Set up the development environment
 
 ## License
 
