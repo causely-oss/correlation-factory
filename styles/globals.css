@@ -484,7 +484,7 @@ body {
 }
 
 /* Button styles */
-.chaos-button {
+.correlation-button {
   background: linear-gradient(
     45deg,
     var(--button-gradient-start),
@@ -506,16 +506,16 @@ body {
   max-width: fit-content;
 }
 
-.chaos-button:hover {
+.correlation-button:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
-.chaos-button:active {
+.correlation-button:active {
   transform: translateY(0);
 }
 
-.chaos-button:disabled {
+.correlation-button:disabled {
   opacity: 0.7;
   cursor: not-allowed;
   transform: none;
@@ -790,7 +790,7 @@ body {
     font-size: 1.2rem;
   }
 
-  .chaos-button {
+  .correlation-button {
     font-size: 1rem;
     padding: 0.8rem 1.5rem;
   }

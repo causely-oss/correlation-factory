@@ -337,8 +337,8 @@ export default function Home() {
         window.history.pushState({}, "", urlPath);
       }
     } catch (err) {
-      console.error("Error generating chaos:", err);
-      setError("Failed to generate chaos. Please try again.");
+              console.error("Error generating correlation:", err);
+        setError("Failed to generate correlation. Please try again.");
     } finally {
       setIsGenerating(false);
     }
@@ -359,7 +359,7 @@ export default function Home() {
       const urlPath = newUrl.replace(window.location.origin, "");
       window.history.pushState({}, "", urlPath);
     } catch (error) {
-      console.error("Error generating chaos:", error);
+              console.error("Error generating correlation:", error);
       setError("Failed to generate new words. Please try again.");
     }
   };
@@ -404,48 +404,50 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>
-          Causeless Chaos - Discover Spurious Correlations in DevOps
-        </title>
+        <title>Correlation Factory - Discover Spurious Correlations in DevOps</title>
         <meta
           name="description"
-          content="Generate and explore spurious correlations between DevOps metrics and everyday life. A fun tool for data scientists, engineers, and curious minds to discover meaningless but statistically significant relationships."
+          content="A humorous web app that generates fake correlations between absurd DevOps metrics. Perfect for demonstrating the dangers of spurious correlations in data science."
         />
         <meta
           name="keywords"
           content="spurious correlation, DevOps metrics, data science, correlation analysis, chaos engineering, statistical significance, data visualization"
         />
-        <meta name="author" content="Causely" />
+        <meta
+          name="author"
+          content="Correlation Factory"
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="robots" content="index, follow" />
-        <meta name="theme-color" content="#1a1a1a" />
+        <meta name="theme-color" content="#6366f1" />
 
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
         <meta
           property="og:title"
-          content="Causeless Chaos - Discover Spurious Correlations in DevOps"
+          content="Correlation Factory - Discover Spurious Correlations in DevOps"
         />
         <meta
           property="og:description"
-          content="Generate and explore spurious correlations between DevOps metrics and everyday life. A fun tool for data scientists and engineers."
+          content="A humorous web app that generates fake correlations between absurd DevOps metrics. Perfect for demonstrating the dangers of spurious correlations in data science."
         />
         <meta property="og:image" content="/og-image.png" />
-        <meta property="og:url" content="https://causeless-chaos.vercel.app" />
-        <meta property="og:site_name" content="Causeless Chaos" />
+        <meta property="og:url" content="https://correlation-factory.vercel.app" />
+        <meta property="og:site_name" content="Correlation Factory" />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
-          content="Causeless Chaos - Discover Spurious Correlations in DevOps"
+          content="Correlation Factory - Discover Spurious Correlations in DevOps"
         />
         <meta
           name="twitter:description"
-          content="Generate and explore spurious correlations between DevOps metrics and everyday life. A fun tool for data scientists and engineers."
+          content="A humorous web app that generates fake correlations between absurd DevOps metrics. Perfect for demonstrating the dangers of spurious correlations in data science."
         />
         <meta name="twitter:image" content="/og-image.png" />
-        <meta name="twitter:creator" content="@causely" />
+        <meta name="twitter:site" content="@causely_ai" />
+        <meta name="twitter:creator" content="@causely_ai" />
 
         {/* Favicon */}
         <link rel="icon" href="/favicon.ico" />
@@ -467,17 +469,18 @@ export default function Home() {
           href="/favicon-16x16.png"
         />
         <link rel="manifest" href="/site.webmanifest" />
+        <meta name="msapplication-TileColor" content="#6366f1" />
 
         {/* Additional SEO */}
-        <meta name="application-name" content="Causeless Chaos" />
-        <meta name="apple-mobile-web-app-title" content="Causeless Chaos" />
+        <meta name="application-name" content="Correlation Factory" />
+        <meta name="apple-mobile-web-app-title" content="Correlation Factory" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="mobile-web-app-capable" content="yes" />
 
         {/* Canonical URL */}
-        <link rel="canonical" href="https://causeless-chaos.vercel.app" />
+        <link rel="canonical" href="https://correlation-factory.vercel.app" />
       </Head>
 
       <div className={`app ${resolvedTheme}`}>
@@ -542,7 +545,7 @@ export default function Home() {
                     className="share-button-compact"
                     onClick={handleShare}
                     disabled={!shareUrl}
-                    title="Share This Chaos"
+                    title="Share This Correlation"
                   >
                     <FontAwesomeIcon icon={faShare} />
                   </button>
@@ -566,11 +569,11 @@ export default function Home() {
               </Link>
 
               <a
-                href="https://github.com/causely-oss/causeless-chaos"
+                href="https://github.com/causely-oss/correlation-factory"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="github-link-compact"
-                title="View Source Code"
+                title="View on GitHub"
               >
                 <FontAwesomeIcon icon={faGithub} />
               </a>
@@ -602,22 +605,22 @@ export default function Home() {
 
         <div className="main-content">
           <div className={`header ${correlationData && metrics && !isGenerating && !error ? 'header-hidden-mobile' : ''}`}>
-            <h1 className="title">Causeless Chaos</h1>
+            <h1 className="title">Correlation Factory</h1>
             <p className="subtitle">
               Generating spurious correlations in DevOps metrics since 2025
             </p>
           </div>
 
           <button
-            className="chaos-button"
+            className="correlation-button"
             onClick={generateChaos}
             disabled={isGenerating}
           >
             {isGenerating
-              ? "Generating Chaos..."
+              ? "Generating Correlation..."
               : correlationData && metrics && !error
-              ? "Show me another causeless chaos"
-              : "Show Me the Causeless Chaos"}
+              ? "Show me another correlation"
+              : "Manufacture Correlation"}
           </button>
 
           {isGenerating && (
@@ -705,7 +708,7 @@ export default function Home() {
               <div className="root-cause-cta">
                 <p className="cta-text">Ready to move beyond correlation to true causal reasoning?</p>
                 <a 
-                  href="https://www.causely.ai/try?utm_source=causeless-chaos&utm_medium=web&utm_campaign=correlation-demo" 
+                  href="https://www.causely.ai/try?utm_source=correlation-factory&utm_medium=web&utm_campaign=correlation-demo" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="demo-button"

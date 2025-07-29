@@ -1,272 +1,76 @@
-# Causeless Chaos 🔄
+# Correlation Factory 🔄
 
-A humorous web app that generates fake but visually convincing correlations between absurd pairs of metrics from the world of DevOps, SRE, and software observability.
-
-Inspired by [Tyler Vigen's Spurious Correlations](https://tylervigen.com/), this app demonstrates how easy it is to create misleading statistical relationships between completely unrelated metrics.
+A humorous web app that generates fake correlations between absurd DevOps metrics. Perfect for demonstrating the dangers of spurious correlations in data science and the importance of proper statistical analysis.
 
 ## Features
 
-- 🎯 **API-Driven Architecture**: Separate API calls for each metric with seeded randomness
-- 📊 **Dual-Axis Charts**: Beautiful, interactive line charts using Recharts library
-- 📈 **Reproducible Correlations**: Seeded random generation for consistent results
-- 😂 **Sarcastic Commentary**: Random humorous captions that highlight the absurdity
-- 📱 **Responsive Design**: Works on desktop and mobile devices
-- ⚡ **Modern UI**: Clean, gradient-based design with smooth animations
-
-## API Architecture
-
-The app uses a unique API design where:
-
-- **MetricA** and **MetricB** are generated from separate API calls with different seeds
-- Both metrics share the same **correlation parameters** to ensure they correlate
-- Each metric is independently deterministic based on its seed
-- The correlation is driven by shared parameters, not the individual seeds
-
-### API Endpoints
-
-#### Get Metric
-
-```
-GET /api/metric/[seed]/[correlationId]
-```
-
-Returns a single metric (DevOps or absurd) based on the seed, correlated via correlationId.
-
-**Example Response:**
-
-```json
-{
-  "metric": "Kubernetes pod restart frequency",
-  "metricType": "devops",
-  "unit": "Hz",
-  "seed": "seed_a_123",
-  "correlationId": "correlation_456",
-  "isMetricA": true
-}
-```
-
-#### Get Correlation Data
-
-```
-GET /api/correlation/[correlationId]
-```
-
-Returns time series data points that are correlated based on the correlationId.
-
-**Example Response:**
-
-```json
-{
-  "data": [
-    { "date": "Dec 15", "metricA": 45.67, "metricB": 123.45 },
-    { "date": "Dec 16", "metricA": 48.23, "metricB": 127.89 }
-  ],
-  "rSquared": 0.834,
-  "correlationId": "correlation_456"
-}
-```
-
-#### Get Caption
-
-```
-GET /api/caption/[correlationId]
-```
-
-Returns a sarcastic caption based on the correlationId.
-
-**Example Response:**
-
-```json
-{
-  "caption": "Everything graphs together if you squint hard enough.",
-  "correlationId": "correlation_456"
-}
-```
-
-## Example Correlations
-
-- "Kubernetes pod restart frequency" vs "Engineers wearing Crocs to work"
-- "Redis cache hit rate" vs "Rubber duck debugging sessions"
-- "API response time (95th percentile)" vs "Avocado toast consumption rate"
+- **Random Correlation Generation**: Creates fake correlations between completely unrelated DevOps metrics
+- **Seeded Randomness**: Generate the same "correlation" using specific seeds for reproducible results
+- **Shareable URLs**: Each correlation gets a unique URL that can be shared
+- **API Endpoints**: RESTful API for programmatic access to correlation data
+- **Responsive Design**: Works on desktop and mobile devices
 
 ## How It Works
 
-1. Click "Show Me the Causeless Chaos"
-2. The app generates:
-   - A unique **correlationId** for shared correlation parameters
-   - Two different **seeds** for the individual metrics
-3. Makes 4 parallel API calls:
-   - `/api/metric/[seed1]/[correlationId]` - Gets first metric
-   - `/api/metric/[seed2]/[correlationId]` - Gets second metric
-   - `/api/correlation/[correlationId]` - Gets correlated time series data
-   - `/api/caption/[correlationId]` - Gets sarcastic caption
-4. Displays the data in a dual-axis line chart with:
-   - Left Y-axis: DevOps metric
-   - Right Y-axis: Absurd metric
-   - X-axis: Recent dates
-5. Shows a fake correlation coefficient (R²) and statistical significance
-6. Displays the sarcastic caption
+1. Click "Manufacture Correlation"
+2. The app generates two random DevOps metrics
+3. Creates a fake correlation between them with realistic-looking data
+4. Displays the correlation with charts and statistics
+5. Provides a shareable URL for the specific correlation
 
-## Getting Started
+## API Documentation
+
+The app provides several API endpoints:
+
+- `GET /api/words` - Get random words for metric generation
+- `GET /api/metric/[seed]/[correlationId]` - Get correlation data for specific seeds
+- `GET /api/caption/[correlationId]` - Get a humorous caption for a correlation
+
+Visit `/api-docs` for interactive API documentation.
+
+## Development
 
 ### Prerequisites
 
-- Node.js (v14 or later)
+- Node.js 18+ 
 - npm or yarn
 
 ### Installation
 
-1. Clone the repository:
+```bash
+# Clone the repository
+git clone <repository-url>
+cd correlation-factory
 
-   ```bash
-   git clone <repository-url>
-   cd causeless-chaos
-   ```
+# Install dependencies
+npm install
 
-2. Install dependencies:
-
-   ```bash
-   npm install
-   ```
-
-3. (Optional) Set up Google Analytics:
-
-   Create a `.env.local` file in the root directory and add your Google Analytics 4 Measurement ID:
-
-   ```bash
-   GOOGLE_ANALYTICS_KEY=G-XXXXXXXXXX
-   ```
-
-   Replace `G-XXXXXXXXXX` with your actual Google Analytics 4 Measurement ID. If this environment variable is not set, Google Analytics will not be loaded.
-
-4. Start the development server:
-
-   ```bash
-   npm run dev
-   ```
-
-5. Open your browser to `http://localhost:3000`
+# Run the development server
+npm run dev
+```
 
 ### Building for Production
 
 ```bash
 npm run build
+npm start
 ```
-
-The built files will be in the `dist` directory.
-
-## Technologies Used
-
-- **React 18**: Modern React with hooks
-- **Recharts**: Beautiful, responsive charts
-- **Next.js 14**: React framework with API routes
-- **Google Analytics 4**: Optional analytics tracking
-- **Seeded Random**: Deterministic random number generation
-- **CSS3**: Custom styling with gradients and animations
-
-## Project Structure
-
-```
-├── api/
-│   ├── utils/
-│   │   └── seededRandom.js        # Seeded random number generator
-│   ├── data/
-│   │   └── metrics.js             # Metrics and captions data
-│   ├── metric/
-│   │   └── [seed]/
-│   │       └── [correlationId].js # Individual metric endpoint
-│   ├── correlation/
-│   │   └── [correlationId].js     # Correlation data endpoint
-│   └── caption/
-│       └── [correlationId].js     # Caption endpoint
-├── src/
-│   ├── components/
-│   │   └── CorrelationChart.jsx   # Dual-axis line chart component
-│   ├── App.jsx                    # Main application component
-│   ├── main.jsx                   # React entry point
-│   └── index.css                  # Global styles
-├── index.html
-├── package.json
-└── vite.config.js
-```
-
-## Seeded Random Architecture
-
-The app uses a sophisticated seeded random system:
-
-1. **Individual Seeds**: Each metric gets its own seed for independent randomness
-2. **Correlation Parameters**: Shared parameters ensure metrics correlate properly
-3. **Deterministic Results**: Same seeds always produce the same results
-4. **Mutual Exclusivity**: Different seeds ensure different metrics are selected
-
-### How Correlation Works
-
-```javascript
-// Each API call uses the same correlationId but different seeds
-/api/metric/seed_a_123/correlation_456  // Returns DevOps metric
-/api/metric/seed_b_789/correlation_456  // Returns absurd metric
-/api/correlation/correlation_456        // Returns correlated data for both
-```
-
-The `correlationId` generates shared parameters like:
-
-- Correlation strength (0.7-0.95)
-- Base values and ranges for both metrics
-- Trend direction
-- R² value
-
-## Deployment
-
-This app is designed to run on Vercel with:
-
-- **Static frontend**: React SPA
-- **Serverless functions**: API endpoints in `/api` directory
-- **Automatic deployment**: Push to deploy
-
-## Customization
-
-### Adding New Metrics
-
-Edit `api/data/metrics.js` to add new metrics to either the `devopsMetrics` or `absurdMetrics` arrays.
-
-### Adding New Captions
-
-Add new sarcastic captions to the `sarcasticCaptions` array in `api/data/metrics.js`.
-
-### Styling
-
-Modify `src/index.css` to customize the appearance, colors, and layout.
-
-### Google Analytics Configuration
-
-The app includes optional Google Analytics 4 tracking that is conditionally loaded based on the `GOOGLE_ANALYTICS_KEY` environment variable:
-
-- **Development**: Set `GOOGLE_ANALYTICS_KEY` in your `.env.local` file
-- **Production**: Set the environment variable in your hosting platform (Vercel, Netlify, etc.)
-- **No Analytics**: If the environment variable is not set, no tracking scripts will be loaded
-
-The analytics component automatically tracks:
-- Page views on initial load
-- Route changes within the app
-- Custom events (can be extended as needed)
 
 ## Contributing
 
-This is a fun project! Feel free to:
+This is a fun project to demonstrate the importance of proper statistical analysis. Feel free to contribute by:
 
-- Add more ridiculous metric combinations
-- Improve the seeded random algorithms
-- Add new API endpoints
-- Enhance the statistical "credibility" of the fake data
-
-## Disclaimer
-
-⚠️ **Important**: This app is for entertainment and educational purposes only. The correlations generated are completely fake and should not be used for any actual analysis or decision-making. The purpose is to demonstrate how misleading statistical relationships can be created between unrelated data points.
+- Adding more absurd DevOps metrics
+- Improving the correlation algorithms
+- Enhancing the UI/UX
+- Adding more humorous captions
 
 ## License
 
-MIT License - feel free to use this for educational purposes, presentations, or just for fun!
+Apache License 2.0 - feel free to use this for educational purposes or to demonstrate the dangers of spurious correlations!
 
----
+See [LICENSE](LICENSE) file for full license terms.
 
-_"Remember: 73% of statistics are made up on the spot."_ - This app, probably
+## Disclaimer
+
+This app is for educational and entertainment purposes only. The correlations generated are completely fake and should not be used for any real data analysis or decision-making.

@@ -1,6 +1,6 @@
 {
-  "name": "Causeless Chaos",
-  "short_name": "Causeless Chaos",
+  "name": "Correlation Factory",
+  "short_name": "Correlation Factory",
   "description": "A humorous web app that generates fake correlations between absurd DevOps metrics",
   "start_url": "/",
   "display": "standalone",

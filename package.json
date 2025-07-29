@@ -1,5 +1,5 @@
 {
-  "name": "causeless-chaos",
+  "name": "correlation-factory",
   "version": "1.0.0",
   "description": "A humorous web app that generates fake correlations between absurd DevOps metrics",
   "scripts": {

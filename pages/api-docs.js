@@ -183,8 +183,8 @@ export default function ApiDocs() {
   return (
     <>
       <Head>
-        <title>API Documentation - Causeless Chaos</title>
-        <meta name="description" content="API documentation for Causeless Chaos endpoints" />
+        <title>API Documentation - Correlation Factory</title>
+        <meta name="description" content="API documentation for Correlation Factory endpoints" />
       </Head>
       
       <div className={`app ${resolvedTheme}`}>
@@ -235,7 +235,7 @@ export default function ApiDocs() {
               </Link>
 
               <a
-                href="https://github.com/causely-oss/causeless-chaos"
+                href="https://github.com/causely-oss/correlation-factory"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="github-link-compact"
@@ -268,7 +268,7 @@ export default function ApiDocs() {
           <div className="api-docs">
         <div className="api-header">
           <h1>API Documentation</h1>
-          <p>Interactive documentation for Causeless Chaos API endpoints</p>
+          <p>Interactive documentation for Correlation Factory API endpoints</p>
         </div>
 
         <div className="api-content">
