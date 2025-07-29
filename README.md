@@ -10,7 +10,7 @@ A humorous web app that generates fake correlations between absurd DevOps metric
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="./public/example-dark.png">
-  <img alt="" src="./public/example-light.png>
+  <img alt="" src="./public/example-light.png">
 </picture>
 
 ## Features
