@@ -1,4 +1,5 @@
 import { Html, Head, Main, NextScript } from "next/document";
+import { config } from "../lib/config";
 
 export default function Document() {
   return (
@@ -43,10 +44,7 @@ export default function Document() {
           content="A humorous web app that generates fake correlations between absurd DevOps metrics"
         />
         <meta property="og:type" content="website" />
-        <meta
-          property="og:url"
-          content="https://correlation-factory.vercel.app"
-        />
+        <meta property="og:url" content={config.siteUrl} />
         <meta property="og:image" content="/og-image.png" />
 
         {/* Twitter Card */}

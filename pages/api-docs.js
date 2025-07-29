@@ -13,6 +13,7 @@ import {
   faArrowLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { config } from "../lib/config";
 
 // Theme management hook
 function useTheme() {
@@ -224,8 +225,8 @@ export default function ApiDocs() {
                 <Image
                   src={
                     resolvedTheme === "dark"
-                      ? "https://www.causely.ai/images/causely-logo-dark.svg"
-                      : "https://www.causely.ai/images/causely-logo.svg"
+                      ? config.logos.dark
+                      : config.logos.light
                   }
                   alt="Causely Logo"
                   width={120}

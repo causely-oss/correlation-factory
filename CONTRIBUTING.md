@@ -91,9 +91,11 @@ const sarcasticCaptions = [
 
 1. **Run the development server** and test your changes manually
 2. **Check the build** to ensure everything compiles correctly:
+
    ```bash
    npm run build
    ```
+
 3. **Test the API endpoints** if you've modified them
 
 ### Submitting Your Contribution
@@ -134,44 +136,6 @@ const sarcasticCaptions = [
 - Open an issue on GitHub for bugs or feature requests
 - Join discussions in existing issues
 - Reach out to the maintainers if you need clarification
-
-## Development Setup
-
-### Prerequisites
-
-- Node.js 18+
-- npm or yarn
-- Git
-
-### Environment Variables
-
-Create a `.env.local` file for local development:
-
-```bash
-# Optional: Google Analytics 4 Measurement ID
-GOOGLE_ANALYTICS_KEY=G-XXXXXXXXXX
-```
-
-### Available Scripts
-
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm start` - Start production server
-- `npm run lint` - Run ESLint
-
-## Project Structure
-
-```
-correlation-factory/
-├── components/          # React components
-├── lib/
-│   ├── data/           # Metrics and captions data
-│   └── utils/          # Utility functions
-├── pages/              # Next.js pages and API routes
-├── public/             # Static assets
-├── styles/             # CSS styles
-└── README.md           # Project documentation
-```
 
 ## License
 

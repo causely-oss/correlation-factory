@@ -14,6 +14,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import html2canvas from "html2canvas";
+import { config } from "../lib/config";
 
 // Theme management hook
 function useTheme() {
@@ -117,6 +118,8 @@ function generateShareUrl(seed1, seed2, correlationId, points = 10) {
 
   return url;
 }
+
+
 
 // Calculate correlation coefficient (R²) and p value from two datasets
 function calculateCorrelationStats(dataA, dataB) {
@@ -431,10 +434,7 @@ export default function Home() {
           content="A humorous web app that generates fake correlations between absurd DevOps metrics. Perfect for demonstrating the dangers of spurious correlations in data science."
         />
         <meta property="og:image" content="/og-image.png" />
-        <meta
-          property="og:url"
-          content="https://correlation-factory.vercel.app"
-        />
+        <meta property="og:url" content={config.siteUrl} />
         <meta property="og:site_name" content="Correlation Factory" />
 
         {/* Twitter */}
@@ -448,8 +448,22 @@ export default function Home() {
           content="A humorous web app that generates fake correlations between absurd DevOps metrics. Perfect for demonstrating the dangers of spurious correlations in data science."
         />
         <meta name="twitter:image" content="/og-image.png" />
-        <meta name="twitter:site" content="@causely_ai" />
-        <meta name="twitter:creator" content="@causely_ai" />
+        <meta name="twitter:site" content={config.social.twitter} />
+        <meta name="twitter:creator" content={config.social.twitter} />
+
+        {/* Bluesky */}
+        <meta name="bsky:card" content="summary_large_image" />
+        <meta
+          name="bsky:title"
+          content="Correlation Factory - Discover Spurious Correlations in DevOps"
+        />
+        <meta
+          name="bsky:description"
+          content="A humorous web app that generates fake correlations between absurd DevOps metrics. Perfect for demonstrating the dangers of spurious correlations in data science."
+        />
+        <meta name="bsky:image" content="/og-image.png" />
+        <meta name="bsky:site" content={config.social.bluesky} />
+        <meta name="bsky:creator" content={config.social.bluesky} />
 
         {/* Favicon */}
         <link rel="icon" href="/favicon.ico" />
@@ -482,7 +496,7 @@ export default function Home() {
         <meta name="mobile-web-app-capable" content="yes" />
 
         {/* Canonical URL */}
-        <link rel="canonical" href="https://correlation-factory.vercel.app" />
+        <link rel="canonical" href={config.siteUrl} />
       </Head>
 
       <div className={`app ${resolvedTheme}`}>
@@ -500,8 +514,8 @@ export default function Home() {
                 <Image
                   src={
                     resolvedTheme === "dark"
-                      ? "https://www.causely.ai/images/causely-logo-dark.svg"
-                      : "https://www.causely.ai/images/causely-logo.svg"
+                      ? config.logos.dark
+                      : config.logos.light
                   }
                   alt="Causely Logo"
                   width={120}

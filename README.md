@@ -51,6 +51,9 @@ Visit `/api-docs` for interactive API documentation.
 git clone https://github.com/causely-oss/correlation-factory
 cd correlation-factory
 
+# Copy .env.local.sample to .env.local & edit this file for your settings
+cp .env.local.sample .env.local
+
 # Install dependencies
 npm install
 
