@@ -3,6 +3,7 @@
 [![Maintained by Causely](https://img.shields.io/badge/Maintained%20by-Causely.ai-blue)](https://www.causely.ai)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black&logo=vercel)](https://correlation-factory.vercel.app)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/causely-oss/correlation-factory/badge)](https://scorecard.dev/viewer/?uri=github.com/causely-oss/correlation-factory)
 
 A humorous web app that generates fake correlations between absurd DevOps metrics. Perfect for demonstrating the dangers of spurious correlations in data science and the importance of proper statistical analysis.
 
